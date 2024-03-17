@@ -1,6 +1,7 @@
 package main
 
 import (
+	"brainfuck-interpreter/interpreter"
 	"brainfuck-interpreter/tokeniser"
 	"fmt"
 	"os"
@@ -21,6 +22,10 @@ func main() {
 
 		if err != nil {
 			panic(fmt.Errorf("failed to parse tokens. Reported %w", err))
+		}
+
+		if err := interpreter.Interpret(tokens); err != nil {
+			panic(fmt.Errorf("failed to execute program: Reported %w", err))
 		}
 
 	}
